@@ -1,0 +1,40 @@
+import type { Psychologist } from '../types';
+
+export const psychologists: Psychologist[] = [
+  {
+    id: 'ana-silva',
+    name: 'Dra. Ana Silva',
+    photo: '/assets/psi-ana.png',
+    specialty: 'Ansiedade e Estresse',
+    approach: 'Terapia Cognitivo-Comportamental (TCC)',
+    availability: 'Seg a Sex, 8h às 20h',
+    priceRange: 'A partir de R$49',
+    rating: 4.9,
+    bio: 'Especialista em ansiedade e estresse com 8 anos de experiência. Acredito que cada pessoa tem dentro de si a força para superar seus desafios.',
+    tags: ['Ansiedade', 'Estresse', 'Online', 'Presencial'],
+  },
+  {
+    id: 'rafael-costa',
+    name: 'Dr. Rafael Costa',
+    photo: '/assets/psi-rafael.png',
+    specialty: 'Depressão e Autoestima',
+    approach: 'Psicanálise Contemporânea',
+    availability: 'Seg a Sáb, 9h às 21h',
+    priceRange: 'A partir de R$59',
+    rating: 4.8,
+    bio: 'Apaixonado por ajudar pessoas a redescobrirem seu valor. Com abordagem acolhedora, trabalho com depressão, autoestima e relacionamentos.',
+    tags: ['Depressão', 'Autoestima', 'Online'],
+  },
+  {
+    id: 'maria-santos',
+    name: 'Dra. Maria Santos',
+    photo: '/assets/orientadora-avatar.png',
+    specialty: 'Relacionamentos e Família',
+    approach: 'Terapia Sistêmica',
+    availability: 'Ter a Sáb, 10h às 19h',
+    priceRange: 'A partir de R$55',
+    rating: 4.9,
+    bio: 'Terapeuta de casais e família com mais de 10 anos de prática. Ajudo pessoas a construírem relações mais saudáveis e significativas.',
+    tags: ['Relacionamentos', 'Família', 'Casais', 'Online'],
+  },
+];

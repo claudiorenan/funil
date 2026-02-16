@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-yellow: #F5C518;
+  --color-brand-dark: #1A1A2E;
+  --color-brand-accent: #6C63FF;
+
+  --color-whatsapp-bg: #ECE5DD;
+  --color-whatsapp-green: #25D366;
+  --color-whatsapp-bubble: #DCF8C6;
+  --color-whatsapp-header: #075E54;
+  --color-whatsapp-dark: #111B21;
+  --color-whatsapp-input: #202C33;
+  --color-whatsapp-outgoing: #005C4B;
+
+  --color-emotional-step1: #FFC107;
+  --color-emotional-step2: #FF9800;
+  --color-emotional-step3: #4CAF50;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f0f2f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for chat */
+.chat-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+/* WhatsApp chat background pattern */
+.whatsapp-bg {
+  background-color: #0b141a;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
