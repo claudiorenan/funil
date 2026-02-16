@@ -268,7 +268,7 @@ export const chatScript: ChatStep[] = [
     key: 'barreira',
   },
 
-  // === FINALIZAÇÃO E TRANSIÇÃO ===
+  // === VALIDAÇÃO E FINALIZAÇÃO ===
   { type: 'progress', step: 7, label: 'Finalizado' },
   { type: 'typing', duration: 2500 },
   {
@@ -277,35 +277,56 @@ export const chatScript: ChatStep[] = [
     text: 'Maravilha, {nome}! Já tenho tudo que preciso. 🎯',
     delay: 600,
   },
+  { type: 'typing', duration: 2500 },
+  {
+    type: 'message',
+    sender: 'orientadora',
+    text: '{nome}, o que você sente é mais comum do que imagina. Muitas pessoas na sua faixa etária e situação passam por isso. Você não está {sozinho}. 💛',
+    delay: 800,
+  },
   { type: 'typing', duration: 2000 },
   {
     type: 'message',
     sender: 'orientadora',
-    text: 'Com base no que você me contou, tenho aqui um grupo de psicólogos especializados nesta situação...',
+    text: 'Não é normal, mas é comum. E o mais importante: tem solução. ✨',
+    delay: 800,
+  },
+  { type: 'typing', duration: 2000 },
+  {
+    type: 'message',
+    sender: 'orientadora',
+    text: 'Com base no que você me contou, temos um grupo focado exatamente nesse tema, com conteúdo de psicólogos especializados para te ajudar! 💚',
     delay: 800,
   },
   { type: 'typing', duration: 1500 },
   {
     type: 'message',
     sender: 'orientadora',
-    text: 'A primeira sessão de terapia custa apenas R$40,00! 💚',
+    text: 'O investimento é de apenas R$27,00 para participar. Você recebe conteúdos exclusivos de psicólogos que vão te ajudar nessa jornada.',
     delay: 800,
+  },
+  { type: 'typing', duration: 1200 },
+  {
+    type: 'message',
+    sender: 'orientadora',
+    text: 'Quer participar do grupo? 😊',
+    delay: 600,
   },
   {
     type: 'options',
     choices: [
-      'Quero escolher meu psicólogo e começar! ✨',
+      'Quero participar! ✨',
       'Quero continuar conversando para achar outra solução',
     ],
     key: 'ver_match',
   },
 
-  // === TRANSIÇÃO PARA MATCH ===
+  // === TRANSIÇÃO PARA GRUPO ===
   { type: 'typing', duration: 1500 },
   {
     type: 'message',
     sender: 'orientadora',
-    text: 'Preparando seu match perfeito... 🔮✨',
+    text: 'Ótimo! Vou te mostrar como participar... 🔮✨',
     delay: 1200,
   },
   { type: 'navigate', to: '/match', delay: 2000 },

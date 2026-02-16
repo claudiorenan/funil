@@ -8,7 +8,13 @@ import type { ChatStep } from '../types';
 let stepIdCounter = 0;
 
 function resolveTemplate(text: string, choices: Record<string, string>): string {
-  return text.replace(/\{(\w+)\}/g, (_, key) => choices[key] || key);
+  // Gender-aware suffix: sozinha/sozinho/sozinha(o)
+  const genero = choices['genero'] || '';
+  const sozinho = genero === 'Feminino' ? 'sozinha' : genero === 'Masculino' ? 'sozinho' : 'sozinha(o)';
+
+  return text
+    .replace(/\{sozinho\}/g, sozinho)
+    .replace(/\{(\w+)\}/g, (_, key) => choices[key] || key);
 }
 
 function makeTimestamp(): string {
