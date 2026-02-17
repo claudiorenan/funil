@@ -160,12 +160,13 @@ export function useChatEngine() {
           const conditionValue = state.selectedChoices[step.conditionKey];
           const branch = step.branches[conditionValue];
           if (branch) {
+            const resolvedQuestion = resolveTemplate(branch.question, state.selectedChoices);
             const sendAsAudio = prefersAudio();
-            const audioDur = sendAsAudio ? estimateAudioDuration(branch.question) : 0;
+            const audioDur = sendAsAudio ? estimateAudioDuration(resolvedQuestion) : 0;
             addMessage({
               id: `msg-${++stepIdCounter}`,
               sender: 'orientadora',
-              text: branch.question,
+              text: resolvedQuestion,
               timestamp: makeTimestamp(),
               status: 'delivered',
               ...(sendAsAudio && {
