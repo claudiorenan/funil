@@ -1,3 +1,4 @@
+import StatusBar from '../components/phone/StatusBar';
 import ChatHeader from '../components/whatsapp/ChatHeader';
 import MessageBubble from '../components/whatsapp/MessageBubble';
 import AudioBubble from '../components/whatsapp/AudioBubble';
@@ -32,6 +33,7 @@ export default function WhatsAppChat() {
         onDecline={handleDeclineCall}
       />
 
+      <StatusBar />
       <ChatHeader />
       <ProgressBar />
 
