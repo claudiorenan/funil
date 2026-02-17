@@ -8,15 +8,15 @@ export const chatScript: ChatStep[] = [
   {
     type: 'audio-message',
     sender: 'orientadora',
-    durationSec: 12,
-    delay: 1500,
+    durationSec: 5,
+    delay: 800,
   },
-  { type: 'typing', duration: 1500 },
+  { type: 'typing', duration: 800 },
   {
     type: 'message',
     sender: 'orientadora',
     text: 'Desculpa ter ligado! 😅 Prefere que eu te mande áudio ou por texto?',
-    delay: 600,
+    delay: 400,
   },
   {
     type: 'options',
