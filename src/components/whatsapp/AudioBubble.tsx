@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Pause } from 'lucide-react';
+import { Play, Pause, Type } from 'lucide-react';
+import { useChatStore } from '../../stores/chatStore';
 import type { ChatMessage } from '../../types';
 
 interface AudioBubbleProps {
@@ -14,6 +15,8 @@ export default function AudioBubble({ message, autoPlay = false }: AudioBubblePr
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [showText, setShowText] = useState(false);
+  const selectChoice = useChatStore((s) => s.selectChoice);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const progressIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef(0);
@@ -195,7 +198,7 @@ export default function AudioBubble({ message, autoPlay = false }: AudioBubblePr
       initial={{ opacity: 0, y: 10, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-      className={`flex ${isLead ? 'justify-end' : 'justify-start'} mb-1`}
+      className={`flex ${isLead ? 'justify-end' : 'justify-start'} ${!isLead && !showText ? 'mb-7' : 'mb-1'}`}
     >
       <div
         className={`relative max-w-[75%] px-2 py-2 rounded-lg ${
@@ -257,6 +260,30 @@ export default function AudioBubble({ message, autoPlay = false }: AudioBubblePr
             </div>
           </div>
         </div>
+        {/* Switch to text button (only for orientadora) */}
+        {!isLead && !showText && (
+          <button
+            onClick={() => {
+              setShowText(true);
+              selectChoice('preferencia_comunicacao', 'Por texto');
+              window.speechSynthesis.cancel();
+              setPlaying(false);
+              stopProgress();
+            }}
+            className="absolute -bottom-6 right-1 flex items-center gap-1 text-[10px] text-gray-400 hover:text-white transition-colors"
+            aria-label="Mudar para texto"
+          >
+            <Type size={10} />
+            <span>ver texto</span>
+          </button>
+        )}
+
+        {/* Expanded text */}
+        {showText && (
+          <div className="mt-2 pt-2 border-t border-white/10">
+            <p className="text-[13px] text-gray-300 leading-relaxed">{message.text}</p>
+          </div>
+        )}
       </div>
     </motion.div>
   );
